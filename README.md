@@ -29,7 +29,7 @@ The system is split into three layers:
 This section explains the non-trivial choices made during development.
 
 ### Multi-class framing (5 severity levels, non-binary)
-The Cleveland dataset's target variable encodes five severity classes (0 = no disease, 1–4 = increasing coronary artery narrowing). Most tutorials collapse this to binary (disease / no disease). Retaining all five classes makes the problem substantially challanging and more realistic, requiring proper handling of class imbalance and appropriate choice of evaluation metric.
+The Cleveland dataset's target variable encodes five severity classes (0 = no disease, 1–4 = increasing coronary artery narrowing). Most tutorials collapse this to binary (disease / no disease). Retaining all five classes makes the problem substantially challenging and more realistic, requiring proper handling of class imbalance and appropriate choice of evaluation metric.
 
 ### SMOTE with minority-class-aware `k_neighbors`
 Class 4 (critical disease) contains only 13 samples. Standard SMOTE with the default `k_neighbors=5` would fail because a 5-fold split of 13 samples leaves fewer than 5 neighbours available. k_neighbors is restricted to 2 (default is 5) because minority classes (e.g., Severity Class 4) have extremely low sample sizes in the training split. Lowering this prevents ValueError crashes during synthetic sample generation.
